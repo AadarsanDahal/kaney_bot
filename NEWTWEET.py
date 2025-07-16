@@ -1,17 +1,22 @@
 import requests
 from requests_oauthlib import OAuth1
+from dotenv import load_dotenv
+import os
 
 
+#OK the API keys are public so load_dotenv()
+load_dotenv()
 
-consumer_key = "jxK2WjS3zyXJt902yerc506PT"
-consumer_secret = "Wscg3McnkhXtG4M5the9woJpbUeQu6nd32IkndNqOdQXN9LYvW"
-access_token = "1945441967598604288-u1nX2yLUU6QcYjLppxfFxW6DdWbYOX"
-access_token_secret = "90mvVOQuEyQgTvzCYuFb87mBLLRcSXsqILN1HHnzn6OkS"
+
+consumer_key = os.getenv("CONSUMER_KEY")
+consumer_secret = os.getenv("CONSUMER_SECRET")
+access_token = os.getenv("ACCESS_TOKEN")
+access_token_secret = os.getenv("ACCESS_TOKEN_SECRET")
 
 
 
 def random_quote():
-    quote = requests.get(" https://api.kanye.rest").json()
+    quote = requests.get("https://api.kanye.rest").json()
     return quote["quote"]
 
 
